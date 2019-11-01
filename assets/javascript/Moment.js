@@ -28,10 +28,13 @@
 
  let firstTrain = "";
 
+ 
  database.ref().set({
      Train: trainName,
      Destination: destination,
      Frequency: frequency,
+     nextArrival: firstTrain,
+     minutesAway: minutesAway,
 
  });
 
@@ -111,6 +114,8 @@
     // $("#destination1").text(snapshot.val().destination);
      //$("#frequency1").text(snapshot.val().frequency);
 
+    
+
      //store variables
      let trainName= childSnapshot.val().train;
      let frequency= childSnapshot.val().frequency;
@@ -121,8 +126,13 @@
      console.log(frequency);
      console.log(destination);
      console.log(firstTrain);
+     console.log(nextArrival);
+
+      //minutesaway variable//
+      let convertedMinutes = moment(nextArrival, "mm").local().toNow();
+      console.log(convertedMinutes);
 
      //// add each to table 
-     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + frequency + "</td><td>" + destination +"</td><td>" + firstTrain +"</td>") ;
+     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +  frequency +"</td><td>" + firstTrain +"</td>") ;
 
  });
