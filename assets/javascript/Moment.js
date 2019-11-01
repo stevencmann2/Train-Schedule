@@ -1,3 +1,5 @@
+ //Referencing and Logging moment.js
+ console.log(moment().format('LT'));
  // Your web app's Firebase configuration
  var firebaseConfig = {
      apiKey: "AIzaSyAZVnBbb-yaGlmhkx-XwmIXqJ8H72v281I",
@@ -58,6 +60,7 @@
          train: trainName,
          destination: destination,
          frequency: frequency,
+         nextArrival: firstTrain, 
 
      }
 
@@ -67,17 +70,13 @@
      console.log(newTrain.train)
      console.log(newTrain.destination)
      console.log(newTrain.frequency)
+     console.log(newTrain.nextArrival)
 
      //clear text boxes in form
      $("#train-name").val("");
      $("#destination").val("");
      $("#frequency").val("");
      $("#train-time").val("");
-
-
-
-
-
 
      //set values in database
      /*
@@ -90,7 +89,7 @@
          */
 
  });
-
+/*
  database.ref().on("value", function (snapshot) {
      // Print the initial data to the console
      console.log(snapshot.val());
@@ -100,12 +99,12 @@
      console.log(snapshot.val().destination);
      console.log(snapshot.val().frequency);
 
-     $("#train-name1").text(snapshot.val().train);
-     $("#destination1").text(snapshot.val().destination);
-     $("#frequency1").text(snapshot.val().frequency);
+     //$("#train-name1").text(snapshot.val().train);
+     //$("#destination1").text(snapshot.val().destination);
+     //$("#frequency1").text(snapshot.val().frequency);
 
  })
-
+ */
  database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 
      //$("#train-name1").text(snapshot.val().train);
@@ -116,20 +115,14 @@
      let trainName= childSnapshot.val().train;
      let frequency= childSnapshot.val().frequency;
      let destination = childSnapshot.val().destination;
+     let firstTrain = childSnapshot.val().nextArrival;
 
      console.log(trainName);
      console.log(frequency);
      console.log(destination);
+     console.log(firstTrain);
 
      //// add each to table 
-     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + frequency + "</td><td>" + destination +"</td>") 
-
-
-
-
-
-
-
-
+     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + frequency + "</td><td>" + destination +"</td><td>" + firstTrain +"</td>") ;
 
  });

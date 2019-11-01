@@ -2,93 +2,90 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!--Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!--Custom CSS-->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <!-- TAB Title-->
-    <title>Train Scheduler</title>
+  <!-- TAB Title-->
+  <title>Train Scheduler</title>
 </head>
 
 <body>
-    <div class="container">
+  <div class="container">
 
-        <!--Jumbotron-->
-        <div class="row">
-            <div class= "col-md-12">
+    <!--Jumbotron-->
+    <div class="row">
+      <div class="col-md-12">
         <div class="jumbotron jumbotron-fluid text-center bg-warning text-dark mb-0">
-                <div class="container">
-                  <h1 class="display-4">We Stayed on the Train Admiring the Time</h1>
-                  <p class="lead">As the Lights of the City Drew Near</p>
-                </div>
-              </div>
-            </div>
+          <div class="container">
+            <h1 class="display-4">We Stayed on the Train Admiring the Time</h1>
+            <p class="lead">As the Lights of the City Drew Near</p>
+          </div>
         </div>
-
-
-        
-        <!--TABLE DISPLAYING INFO-->
-
-     
-        <table class="table table-dark mt-3 trainTable">
-                <thead>
-                  <tr>
-                    <th scope="col">Train Name</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Frequency (min)</th>
-                    <th scope="col">Next Arrival</th>
-                    <th scope="col">Minutes Away</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-        
-        
-        
-        
-        
-        <!--THIS IS THE INPUT FIELD FOR THE TRANSPORTATION-->
-        
-        <form class="border border-primary mb-4">
-            <div class="card-header border border-primary p-3 mb-2 bg-primary text-white font-weight-bold">
-                <span>Add Train</span>
-            </div>
-            <div class="form-group pl-3 pr-3 font-weight-bold">
-                <label for="train-name">Train Name</label>
-                <input type="name" class="form-control" id="train-name">
-            </div>
-            <div class="form-group pl-3 pr-3 font-weight-bold">
-                <label for="destination">Destination</label>
-                <input type="destination" class="form-control" id="destination">
-            </div>
-            <div class="form-group pl-3 pr-3 font-weight-bold">
-                <label for="train-time">First Train Time (HH:mm - military Time) </label>
-                <input type="time" class="form-control" id="train-time">
-            </div>
-            <div class="form-group pl-3 pr-3 font-weight-bold">
-                <label for="frequency">Frequency (min)</label>
-                <input type="number" class="form-control" id="frequency">
-            </div>
-            <button type="submit" class="btn btn-primary m-3 font-weight-bold" id="submission">Submit</button>
-        </form>
-
-        
-
-
-
-
+      </div>
     </div>
 
 
 
+    <!--TABLE DISPLAYING INFO-->
+
+
+    <table class="table table-dark mt-3 trainTable">
+      <thead>
+        <tr>
+          <th scope="col">Train Name</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Frequency (min)</th>
+          <th scope="col">Next Arrival (Military Time: HH:mm)</th>
+          <th scope="col">Minutes Away</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+
+
+
+
+    <!--THIS IS THE INPUT FIELD FOR THE TRANSPORTATION-->
+
+    <form class="border border-primary mb-4">
+      <div class="card-header border border-primary p-3 mb-2 bg-primary text-white font-weight-bold">
+        <span>Add Train</span>
+      </div>
+      <div class="form-group pl-3 pr-3 font-weight-bold">
+        <label for="train-name">Train Name</label>
+        <input type="name" class="form-control" id="train-name">
+      </div>
+      <div class="form-group pl-3 pr-3 font-weight-bold">
+        <label for="destination">Destination</label>
+        <input type="name" class="form-control" id="destination">
+      </div>
+      <div class="form-group pl-3 pr-3 font-weight-bold">
+        <label for="train-time">First Train Time </label>
+        <input type="time" class="form-control" id="train-time" value="00:00">
+      </div>
+      <div class="form-group pl-3 pr-3 font-weight-bold">
+        <label for="frequency">Frequency (min)</label>
+        <input type="number" class="form-control" id="frequency">
+      </div>
+      <button type="submit" class="btn btn-primary m-3 font-weight-bold" id="submission">Submit</button>
+    </form>
+
+
+
+
+
+
+  </div>
 
 
 
@@ -97,23 +94,30 @@
 
 
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
 
-    <!-- Firebase Core JavaScript Link -->
-    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-    <!-- Specific Firebase products we want (Database) -->
-    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js"></script>
 
-    <!-- Optional JavaScript -->
-    <script src="assets/javascript/Moment.js"></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <!-- Firebase Core JavaScript Link -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <!-- Specific Firebase products we want (Database) -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js"></script>
+
+  <!-- MOMENT JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+  <!-- Optional JavaScript -->
+  <script src="assets/javascript/Moment.js"></script>
+
 
 
 </body>
