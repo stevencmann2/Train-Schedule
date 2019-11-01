@@ -18,3 +18,38 @@ console.log(database);
 database.ref().set({
     Train: "working?"
 });
+
+
+/////////// DECLARE INITAL VARIABLES \\\\\\\\\\\\\\\\
+let trainName = "";
+let destination = "";
+let frequency = "";
+let nextArrival = "";
+let minutesAway = "";
+
+
+let firstTrain= "";
+
+
+/////////// CAPTURE BUTTON CLICK FOR FORM SUBMIT\\\\\\\\\\\\\\
+
+$("#submission").on("click", function(event) {
+
+    event.preventDefault();
+
+    // obtain text values from form
+
+    trainName = $("#train-name").val().trim();
+    destination = $("#destination").val().trim();
+    frequency = parseInt($("#frequency").val().trim());
+    firstTrain= $("#train-time").val().trim();
+     
+
+    console.log(trainName);
+    console.log(destination);
+    console.log(frequency);
+    console.log(firstTrain);
+    
+
+
+});
