@@ -1,6 +1,6 @@
  //Referencing and Logging moment.js
- const m = moment();
- console.log(m.format("h mm A"));
+ //const m = moment();
+ //console.log(m.format("h mm A"));
  // Your web app's Firebase configuration
  var firebaseConfig = {
      apiKey: "AIzaSyAZVnBbb-yaGlmhkx-XwmIXqJ8H72v281I",
@@ -97,23 +97,68 @@
     
 
      //store variables
-     let trainName = childSnapshot.val().train;
-     let frequency = childSnapshot.val().frequency;
-     let destination = childSnapshot.val().destination;
-     let firstTrain = childSnapshot.val().nextArrival;
+     const trainName = childSnapshot.val().train;
+     const frequency = childSnapshot.val().frequency;
+     const destination = childSnapshot.val().destination;
+     const firstTrain = childSnapshot.val().nextArrival;
         console.log(trainName);
 
+        console.log(firstTrain);
+
+        //CONVERTEDARRIVAL SHOWs AM/PM SCHEDULE FOR TRAINARRIVAL
+        //const timeForm = moment(firstTrain, "HH:mm");
+       //const convertedArrival = timeForm.format("h:mm A");
+       //console.log(convertedArrival);
+       
+       // THIS WILL CONTAIN CALCULATION FOR NEXT ARRIVAL & MINUTES AWAY
+       //using frequency & first train declared above
+
+        const nextArrivalConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+        console.log(nextArrivalConverted);
+
+        // Current Time
+        const now = moment();
+        console.log("CURRENT TIME: " + moment(now).format("hh:mm"));
+
+        // Difference between currentTietimes
+    const diffTime = now.diff(moment(nextArrivalConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    // Time apart (remainder)
+    const tRemainder = diffTime % frequency;
+    console.log(tRemainder);
+
+    // Minute Until Train
+    const tMinutesTillTrain = frequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+    // Next Train
+    const nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
+    console.log(nextTrain);
+
+
+
+
+
+
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////
      //converted Next Arrival to AM PM
-     let finalArrival = moment(firstTrain, "h mm A");
+                                   //let finalArrival = moment(firstTrain, "h mm A");
      //console.log(finalArrival);
 
      //minutesaway variable//
-     let convertedMinutes = moment(firstTrain, "h mm").toNow(true);
-     console.log(convertedMinutes);
+                    //let convertedMinutes = moment(firstTrain, "h mm").toNow(true);
+                     //console.log(convertedMinutes);
      // console.log(convertedMinutes);
 
      //// add each to table 
-     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + firstTrain + "</td><td>" + convertedMinutes + "</td>");
+     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + moment(nextTrain).format("hh:mm") + "</td><td>"+tMinutesTillTrain + "</td>"); 
 
  });
 
