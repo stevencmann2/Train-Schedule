@@ -2,6 +2,22 @@
  //const m = moment();
  //console.log(m.format("h mm A"));
  // Your web app's Firebase configuration
+
+///Time functtion to display to the current time
+function currentTimeDisplay() {
+    const time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+    $("#current-time-display").text(time);
+    setTimeout(currentTimeDisplay, 1000);
+};
+
+$(document).ready(function () {
+    currentTimeDisplay();
+});
+
+//displaying current time to the user
+ $("#current-time-display").append(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+
+
  var firebaseConfig = {
      apiKey: "AIzaSyAZVnBbb-yaGlmhkx-XwmIXqJ8H72v281I",
      authDomain: "train-a8af5.firebaseapp.com",
