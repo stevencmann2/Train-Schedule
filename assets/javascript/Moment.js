@@ -167,7 +167,7 @@ $(document).ready(function () {
      // console.log(convertedMinutes);
 
      //// add each to table 
-     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + moment(nextTrain).format("hh:mm") + "</td><td>"+tMinutesTillTrain + "</td>"); 
+     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + moment(nextTrain).format("hh:mm a") + "</td><td>"+tMinutesTillTrain + "</td>"); 
 
  });
 
