@@ -140,13 +140,6 @@
 
 
 
-
-
-
-
-
-
-
         /////////////////////////////////////////////////////////////////////////////////
      //converted Next Arrival to AM PM
                                    //let finalArrival = moment(firstTrain, "h mm A");
