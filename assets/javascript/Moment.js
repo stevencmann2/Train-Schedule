@@ -1,5 +1,5 @@
  //Referencing and Logging moment.js
- const m = moment(); 
+ const m = moment();
  console.log(m.format("h mm A"));
  // Your web app's Firebase configuration
  var firebaseConfig = {
@@ -20,30 +20,41 @@
 
 
  /////////// DECLARE INITAL VARIABLES \\\\\\\\\\\\\\\\
- 
- let trainName = "";
- let destination = "";
- let frequency = "";
- let nextArrival = "";
- let minutesAway = "";
 
-
- let firstTrain = "";
-
+ let train ;
+ let destination ;
+ let frequency ;
+ let nextArrival ;
+ let minutesAway ;
+ let firstTrain ;
 
  /////might need to put this back in 
 
- /*
- database.ref().set({
-     Train: trainName,
-     Destination: destination,
-     Frequency: frequency,
-     nextArrival: firstTrain,
-     minutesAway: minutesAway,
 
- });
- */
+ // this will be for local values, it gathers snapshot from the database to be loaded later
+// 
+// database.ref().on("value", function(snapshot) {
+    
+//     let train = snapshot.val().train;
+//     let destination = snapshot.val().destination;
+//     let frequency = snapshot.val().frequency;
+//     let convertedMinutes = snapshot.val().minutesAway;      /////// need to detemrine this
+//     let nextArrival = snapshot.val().nextArrival;           //////need to determine this
+    
+//     // Log the value of the various properties
+//     console.log(snapshot.val());
+//     console.log(snapshot.val()["-LsgYg91hCzJfEQgmcVD"].train);
+//     console.log(snapshot.val().destination);
+//     console.log(snapshot.val().frequency);
+//     console.log(snapshot.val().minutesAway);
+//     console.log(snapshot.val().nextArrival);
 
+//     ///////////NEEEEEEEED TO ADD IN MINUTES AWAYYY LATERRRRRRRR|||||||||||
+
+//     $(".trainTable").append("<tr><td>" + train + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + firstTrain + "</td><td>" + convertedMinutes + "</td>");
+
+
+// });
 
  /////////// CAPTURE BUTTON CLICK FOR FORM SUBMIT\\\\\\\\\\\\\\
 
@@ -58,10 +69,7 @@
      frequency = parseInt($("#frequency").val().trim());
      firstTrain = $("#train-time").val().trim();
 
-     //console.log(trainName);
-     //console.log(destination);
-     //console.log(frequency);
-     //console.log(firstTrain);
+
 
      //create local temporary object for train data
 
@@ -69,18 +77,12 @@
          train: trainName,
          destination: destination,
          frequency: frequency,
-         nextArrival: firstTrain, 
-
+         nextArrival: firstTrain,
      }
 
+     console.log(newTrain);
      //push to database
      database.ref().push(newTrain);
-
-
-    // console.log(newTrain.train)
-     //console.log(newTrain.destination)
-     //console.log(newTrain.frequency)
-     //console.log(newTrain.nextArrival)
 
      //clear text boxes in form
      $("#train-name").val("");
@@ -88,62 +90,31 @@
      $("#frequency").val("");
      $("#train-time").val("");
 
-     //set values in database
-     /*
-         database.ref().push({
-             train: trainName,
-             destination: destination,
-             frequency: frequency,
 
-         });
-         */
+    });
 
- });
-/*
- database.ref().on("value", function (snapshot) {
-     // Print the initial data to the console
-     console.log(snapshot.val());
-
-     // Log the value of the various properties
-     console.log(snapshot.val().train);
-     console.log(snapshot.val().destination);
-     console.log(snapshot.val().frequency);
-
-     //$("#train-name1").text(snapshot.val().train);
-     //$("#destination1").text(snapshot.val().destination);
-     //$("#frequency1").text(snapshot.val().frequency);
-
- })
- */
  database.ref().on("child_added", function (childSnapshot) {
-
-     //$("#train-name1").text(snapshot.val().train);
-    // $("#destination1").text(snapshot.val().destination);
-     //$("#frequency1").text(snapshot.val().frequency);
-
     
 
      //store variables
-     let trainName= childSnapshot.val().train;
-     let frequency= childSnapshot.val().frequency;
+     let trainName = childSnapshot.val().train;
+     let frequency = childSnapshot.val().frequency;
      let destination = childSnapshot.val().destination;
      let firstTrain = childSnapshot.val().nextArrival;
-
-    //console.log(trainName);
-     //console.log(frequency);
-     //console.log(destination);
-     //console.log(firstTrain);
-     //console.log(nextArrival);
+        console.log(trainName);
 
      //converted Next Arrival to AM PM
-    let finalArrival = moment(firstTrain, "h mm A");
-    //console.log(finalArrival);
+     let finalArrival = moment(firstTrain, "h mm A");
+     //console.log(finalArrival);
 
-      //minutesaway variable//
-      let convertedMinutes = moment(firstTrain, "h mm").toNow(true);
+     //minutesaway variable//
+     let convertedMinutes = moment(firstTrain, "h mm").toNow(true);
+     console.log(convertedMinutes);
      // console.log(convertedMinutes);
 
      //// add each to table 
-     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +  frequency +"</td><td>" + firstTrain +"</td><td>" + convertedMinutes +"</td>") ;
+     $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + firstTrain + "</td><td>" + convertedMinutes + "</td>");
 
  });
+
+   
