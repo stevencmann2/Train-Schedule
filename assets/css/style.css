@@ -1,7 +1,22 @@
+body {
+    background-image: url("../images/train1.jpg");
+}
 #current-time-display {
     
         font-family: 'Press Start 2P', cursive;
         font-size: 1.3em;
         
+}
 
+.jumbotron {
+    opacity: 95%;
+}
+
+table{
+    opacity: 90%;
+}
+
+
+form {
+    opacity: 95%;
 }
