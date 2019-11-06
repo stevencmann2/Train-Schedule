@@ -1,5 +1,5 @@
 //Javascript for Train scheduler activity 
-
+let timeNow = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 ///Time functtion to display to the current time
 function currentTimeDisplay() {
     const time = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -113,17 +113,20 @@ database.ref().on("child_added", function (childSnapshot) {
 
     // Next Train
     const nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    //console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    //declare varibale to be printed to the screen
+     arrivalTime = moment(nextTrain).format("hh:mm a");
 
-    //console.log(nextTrain);
-
-
-
-    /////////////////////////////////////////////////////////////////////////////////
 
     //// add each to table 
-    $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + moment(nextTrain).format("hh:mm a") + "</td><td>" + tMinutesTillTrain + "</td>");
+    $(".trainTable").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td id =minutesArrival>" + arrivalTime + "</td><td id=minutesaway>" + tMinutesTillTrain + "</td>");
+
 
 }, function(errorObject) {
     console.log("The read failed: " + errorObject.code);
 });
+
+
+
+
+
+
