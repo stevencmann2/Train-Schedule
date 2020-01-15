@@ -17,7 +17,6 @@ No need to install anything.
 
 ## Visual Guide
 
-![A gif of the train app](./assets/images/Train-Gif.gif)
 
 ## Deployment
 https://stevencmann2.github.io/Train-Schedule/
